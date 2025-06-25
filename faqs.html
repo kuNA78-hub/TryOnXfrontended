@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQs - Virtual Try-On</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f8f9fa;
+            color: #1a1a1a;
+            overflow-x: hidden;
+        }
+        .navbar {
+            background-color: rgba(0, 0, 0, 0.95);
+            padding: 1.5rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(12px);
+        }
+        .navbar .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .navbar a {
+            color: #fff;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 0.75rem 1.5rem;
+            transition: color 0.3s ease, transform 0.3s ease, background 0.3s ease;
+            border-radius: 8px;
+        }
+        .navbar a:hover {
+            color: #ff6f61;
+            transform: translateY(-2px);
+            background: rgba(255, 255, 255, 0.1);
+        }
+        .navbar a.active {
+            color: #ff6f61;
+            background: rgba(255, 255, 255, 0.15);
+        }
+        .faq-header {
+            padding: 12rem 2rem 6rem;
+            text-align: center;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.4)), url('faq-bg.jpg') no-repeat center;
+            background-size: cover;
+            color: #fff;
+            position: relative;
+        }
+        .faq-header h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            text-shadow: 3px 3px 12px rgba(0, 0, 0, 0.7);
+        }
+        .faq-header p {
+            font-size: 1.25rem;
+            font-weight: 300;
+            max-width: 900px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+        .btn-primary {
+            background-color: #ff6f61;
+            color: #fff;
+            padding: 1rem 3.5rem;
+            font-size: 1.25rem;
+            font-weight: 600;
+            border-radius: 50px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+        }
+        .btn-primary:hover {
+            background-color: #e55a4e;
+            transform: scale(1.05);
+            box-shadow: 0 10px 28px rgba(0, 0, 0, 0.4);
+        }
+        .btn-primary:active {
+            transform: scale(1);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+        .faq-content {
+            max-width: 1200px;
+            margin: 5rem auto;
+            padding: 3rem;
+        }
+        .faq-item {
+            background-color: #fff;
+            border-radius: 16px;
+            margin-bottom: 1rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .faq-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+        .faq-item h3 {
+            font-size: 1.75rem;
+            font-weight: 600;
+            color: #1a1a1a;
+            padding: 1.5rem 2rem;
+            margin: 0;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.3s ease;
+        }
+        .faq-item h3:hover {
+            background: #f1f1f1;
+        }
+        .faq-item h3::after {
+            content: '+';
+            font-size: 1.5rem;
+            color: #ff6f61;
+        }
+        .faq-item.active h3::after {
+            content: '−';
+        }
+        .faq-item p {
+            font-size: 1rem;
+            color: #555;
+            line-height: 1.7;
+            padding: 0 2rem 2rem;
+            margin: 0;
+            display: none;
+        }
+        .faq-item.active p {
+            display: block;
+        }
+        @media (max-width: 768px) {
+            .faq-header {
+                padding: 9rem 1.5rem 4rem;
+            }
+            .faq-header h1 {
+                font-size: 2.5rem;
+            }
+            .faq-header p {
+                font-size: 1.1rem;
+            }
+            .faq-content {
+                padding: 2rem;
+            }
+            .faq-item h3 {
+                font-size: 1.5rem;
+                padding: 1.25rem 1.5rem;
+            }
+            .faq-item p {
+                font-size: 0.9rem;
+                padding: 0 1.5rem 1.5rem;
+            }
+            .navbar a {
+                padding: 0.5rem 1rem;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container mx-auto flex justify-center space-x-8">
+            <a href="index.html">Home</a>
+            <a href="#">Playground</a>
+            <a href="#">How To Use</a>
+            <a href="introduction.html">Introduction</a>
+            <a href="faqs.html" class="active">FAQ</a>
+            <a href="#">Blog</a>
+        </div>
+    </nav>
+
+    <div class="faq-header">
+        <h1>Frequently Asked Questions</h1>
+        <p>Find answers to your questions about our AI-powered virtual try-on platform, designed for visualizing any fashion style from any source.</p>
+        <button class="btn-primary mt-6" onclick="tryItNow()">Try It Now</button>
+    </div>
+
+    <div class="faq-content">
+        <div class="faq-item">
+            <h3>What is the virtual try-on platform?</h3>
+            <p>Our platform uses advanced AI and AR technology to let you virtually try on any type of clothing or accessory. Upload a photo or use your live camera to see how outfits look on you in real-time. It’s designed exclusively for fashion visualization, not for purchasing items.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>Can I try on any type of clothing or accessory?</h3>
+            <p>Yes! Our platform supports all types of wear, including dresses, tops, pants, jackets, accessories, and more. There are no restrictions on categories, so you can try any fashion item you choose.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>Can I upload outfits from any source?</h3>
+            <p>Absolutely! You can upload images of outfits or accessories from any source, such as your personal wardrobe, online stores, designer catalogs, or social media. Our AI will overlay the item onto your photo or live camera feed with high accuracy.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>Is this platform for shopping?</h3>
+            <p>No, our platform is strictly for virtual try-on. It allows you to visualize how outfits look on you without any shopping functionality. You can experiment with styles from any source to make informed fashion decisions.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>How do I use the virtual try-on feature?</h3>
+            <p>It’s easy: upload a photo of yourself or use your device’s camera for a live capture. Then, upload an image of the outfit or accessory you want to try. Our AI will seamlessly overlay the item on your image, letting you explore different looks in real-time.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>What devices are supported?</h3>
+            <p>Our platform is compatible with any device running a modern web browser, including smartphones, tablets, and desktops. For the live camera feature, you’ll need a device with a camera and browser permission to access it.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>How accurate are the try-on previews?</h3>
+            <p>Our AI-driven technology delivers photorealistic previews that accurately reflect fit and style. The quality of the preview depends on the image quality, but our system is optimized for precise and lifelike visualizations.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>Do I need to download an app to use the platform?</h3>
+            <p>No, our platform is entirely web-based, so you can access it directly from your browser without downloading any software.</p>
+        </div>
+    </div>
+
+    <script>
+        function tryItNow() {
+            window.location.href = 'index.html';
+        }
+
+        document.querySelectorAll('.faq-item h3').forEach(item => {
+            item.addEventListener('click', () => {
+                const faqItem = item.parentElement;
+                const isActive = faqItem.classList.contains('active');
+                document.querySelectorAll('.faq-item').forEach(faq => {
+                    faq.classList.remove('active');
+                });
+                if (!isActive) {
+                    faqItem.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
